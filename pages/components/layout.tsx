@@ -12,11 +12,11 @@ import Link from 'next/link'
 import styles from './layout.module.scss'
 import utilStyles from '../../styles/utils.module.scss'
 
-const name = 'Name'
-export const siteTitle = 'Site Title'
+const name:string = 'Name'
+export const siteTitle:string = 'Site Title'
 
- export default function Layout({ children, home }:any) {
-   return (
+export default function Layout({ children, home }:any) {
+  return (
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
@@ -62,14 +62,11 @@ export const siteTitle = 'Site Title'
           </>
         )}
       </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
+      <main className={styles.main}>{children}</main>
+      
+      <footer className={styles.footer}>
+
+      </footer>
     </div>
-   )
- }
+  )
+}
