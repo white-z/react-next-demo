@@ -1,14 +1,6 @@
-/**
- * @Description:
- * @Author: zhenghao
- * @Date:   2021-07-22 10:24:29
- * @Email:  zhenghao@yiye.ai
- * @Last modified by:   zhenghao
- * @Last modified time: 2021-07-22 12:04:28
- */
 import Head from 'next/head'
 import Link from 'next/link'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 
  export default function FirstPost() {
    return (

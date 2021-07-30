@@ -1,15 +1,15 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-import { Provider as StyletronProvider } from 'styletron-react'
+import Provider from './components/Provider';
 import { styletron } from '../styletron'
 
-class MyDocument extends Document {
+class RootDocument extends Document {
   static async getInitialProps(context:DocumentContext) {
     const renderPage = () =>
       context.renderPage({
         enhanceApp: (App:any) => (props:any) => (
-          <StyletronProvider value={styletron}>
+          <Provider value={styletron}>
             <App {...props} />
-          </StyletronProvider>
+          </Provider>
         ),
       })
 
@@ -44,4 +44,4 @@ class MyDocument extends Document {
   }
 }
 
-export default MyDocument
+export default RootDocument

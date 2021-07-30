@@ -1,13 +1,12 @@
-import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
-import { Provider as StyletronProvider } from 'styletron-react'
-import { styletron } from '../styletron'
+import Provider from './components/Provider';
+import '../styles/globals.scss'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function RootApp({ Component, pageProps }: AppProps) {
   return (
-    <StyletronProvider value={styletron}>
+    <Provider>
       <Component {...pageProps} />
-    </StyletronProvider>
+    </Provider>
   )
 }
-export default MyApp
+export default RootApp

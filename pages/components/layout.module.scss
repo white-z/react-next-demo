@@ -1,25 +1,24 @@
 .container {
-  max-width: 36rem;
-  padding: 0 1rem;
-  margin: 3rem auto 6rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100%;
 }
 
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 5rem;
 }
 
-.headerImage {
-  width: 6rem;
-  height: 6rem;
+.main {
+  flex: 1;
+  // min-height: calc(100% - 5rem - 3.125rem);
 }
 
-.headerHomeImage {
-  width: 8rem;
-  height: 8rem;
-}
-
-.backToHome {
-  margin: 3rem 0 0;
+.footer {
+  display: flex;
+  height: 3.125rem;
 }
