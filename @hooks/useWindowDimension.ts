@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { debounce } from 'lodash';
 
-type WindowDimentions = {
+export type WindowDimentions = {
   readonly width: number | undefined;
   readonly height: number | undefined;
 };
