@@ -1,12 +1,12 @@
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-import Provider from './components/Provider';
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Provider from '../components/Provider';
 import { styletron } from '../styletron'
 
 class RootDocument extends Document {
-  static async getInitialProps(context:DocumentContext) {
+  static async getInitialProps(context) {
     const renderPage = () =>
       context.renderPage({
-        enhanceApp: (App:any) => (props:any) => (
+        enhanceApp: (App) => (props) => (
           <Provider value={styletron}>
             <App {...props} />
           </Provider>
@@ -25,7 +25,7 @@ class RootDocument extends Document {
     return (
       <Html>
         <Head>
-          {this.props.stylesheets.map((sheet:any, i:number) => (
+          {this.props.stylesheets.map((sheet, i) => (
             <style
               className="_styletron_hydrate_"
               dangerouslySetInnerHTML={{ __html: sheet.css }}
