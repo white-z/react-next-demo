@@ -9,10 +9,6 @@ html, body {
   background: #0E141B;
 }
 
-[data-theme="dark"] a {
-  color: #559ff3
-}
-
 body {
   font-size: 1rem;
   transition: color .35s ease, background .35s ease;
@@ -30,11 +26,6 @@ body {
 
 * {
   box-sizing: border-box;
-}
-
-a {
-  color: #0070f3;
-  text-decoration: none;
 }
 
 a:hover {

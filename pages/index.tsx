@@ -4,9 +4,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Layout from '../components/Layout'
 import ThemeToogle from '../components/ThemeToggle'
+import useWindowOffset from '../@hooks/useWindowOffset';
 
 export default function Home() {
-
+  const { top } = useWindowOffset();
   return (
     <Layout>
       <Head>
@@ -16,7 +17,7 @@ export default function Home() {
       </Head>
       <Link href="/posts/first-post">POST</Link>
       <ThemeToogle />
-      <div style={{height: '2000px'}}>=====</div>
+      <div style={{height: '2000px'}}>{top}</div>
     </Layout>
   )
 }

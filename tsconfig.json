@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es2015",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -12,15 +16,27 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "rootDirs": [
+      "."
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
   },
   "include": [
-    "next-env.d.ts", 
+    "next-env.d.ts",
     "*.ts",
     "*.tsx",
-    "**/*.ts", 
+    "**/*.ts",
     "**/*.tsx",
-    "@types/.d.ts"
-, "pages/_document.js"  ],
-  "exclude": ["node_modules"]
+    "@types/.d.ts",
+    "pages/_document.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

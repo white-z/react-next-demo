@@ -6,24 +6,24 @@ export type WindowDimentions = {
   readonly height: number | undefined;
 };
 
-const useWindowDimentions = (wait = 150): WindowDimentions => {
-  const [windowDimentions, seWindowDimentions] = useState<WindowDimentions>({
+const useWindowDimensions = (wait = 150): WindowDimentions => {
+  const [windowDimensions, setWindowDimensions] = useState<WindowDimentions>({
     width: undefined,
     height: undefined
   });
   const handleResize = debounce((): void => {
-    seWindowDimentions({
+    setWindowDimensions({
       width: window.innerWidth,
       height: window.innerHeight
     });
   }, wait);
-  handleResize();
   useEffect(() => {
+    window.addEventListener('load', handleResize);
     window.addEventListener('resize', handleResize);
     return (): void => window.removeEventListener('resize', handleResize);
   });
 
-  return windowDimentions;
+  return windowDimensions;
 };
 
-export default useWindowDimentions;
+export default useWindowDimensions;
