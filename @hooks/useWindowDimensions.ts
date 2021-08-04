@@ -18,10 +18,10 @@ const useWindowDimensions = (wait = 150): WindowDimentions => {
     });
   }, wait);
   useEffect(() => {
-    window.addEventListener('load', handleResize);
+    handleResize();
     window.addEventListener('resize', handleResize);
     return (): void => window.removeEventListener('resize', handleResize);
-  });
+  }, []);
 
   return windowDimensions;
 };
