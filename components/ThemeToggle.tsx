@@ -19,14 +19,13 @@ export default function ThemeToggle() {
       <Button 
         h="2.5rem"
         w="2.5rem"
-        bg="black"
         rounded="circle"
         m={{ r: "1rem" }}
         shadow="2"
         hoverShadow="4"
         onClick={() => setTheme(isDark ? 'light' : 'dark')}
       >
-        <Icon name="Search" size="20px" color="white" />
+        <Icon name="Search" size="20px" color="white"/>
       </Button>
     </Div>
   )

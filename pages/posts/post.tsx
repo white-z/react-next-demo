@@ -1,8 +1,9 @@
 import { ElementRef, useEffect, useRef, useState } from 'react'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import cn from 'classnames'
 import Link from 'next/link'
 import { Div, Text } from 'atomize';
-import Layout, { TITLE } from '@/components/Layout'
+import Layout from '@/components/Layout'
 import useWindowOffset from '@/@hooks/useWindowOffset'
 import useWindowDimensions from '@/@hooks/useWindowDimensions'
 
@@ -41,15 +42,23 @@ export default function FirstPost({ posts }: InferGetStaticPropsType<typeof getS
     setMounted(true);
   }, [])
 
+  const toggle = {
+    isFixedTitle: !!(mounted && (top && top > 80))
+  }
+  
   return (
     <Layout title={posts.name}>
       <Div style={{ height: '2000px' }}>
         <Div h="48px">
           <Text
+            shadow={ toggle.isFixedTitle ? '1' : '' }
             tag="h1"
             textSize="display1"
             ref={postTitle}
-            className={`${styles.postTitle} ${mounted && (top && top > 80) ? styles.top : ''}`}>
+            className={cn({
+              [styles.postTitle]: true,
+              [styles.top]: toggle.isFixedTitle
+            })}>
             First Post
           </Text>
         </Div>
