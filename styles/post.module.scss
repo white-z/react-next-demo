@@ -1,6 +1,7 @@
 .postTitle {
   text-align: center;
-  background: var(--white);
+  background: var(--theme-bg);
+  transition: box-shadow .25s;
   &.top {
     position: fixed;
     top: 0;

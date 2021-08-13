@@ -6,7 +6,7 @@ export type WindowDimentions = {
   readonly height: number | undefined;
 };
 
-const useWindowDimensions = (wait = 150): WindowDimentions => {
+export const useWindowDimensions = (wait = 150): WindowDimentions => {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimentions>({
     width: undefined,
     height: undefined

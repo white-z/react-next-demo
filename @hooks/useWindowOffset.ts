@@ -5,7 +5,7 @@ export type WindowOffset = {
   readonly left: number | undefined;
 };
 
-const useWindowOffset = (): WindowOffset => {
+export const useWindowOffset = (): WindowOffset => {
   const [windowOffset, setWindowOffset] = useState<WindowOffset>({
     top: undefined,
     left: undefined

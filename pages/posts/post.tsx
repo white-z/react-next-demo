@@ -1,11 +1,10 @@
-import { ElementRef, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import cn from 'classnames'
 import Link from 'next/link'
-import { Div, Text } from 'atomize';
+import { Div, Text, Input } from 'atomize';
 import Layout from '@/components/Layout'
-import useWindowOffset from '@/@hooks/useWindowOffset'
-import useWindowDimensions from '@/@hooks/useWindowDimensions'
+import { useWindowOffset, useWindowDimensions } from '@/@hooks'
 
 import styles from '@/styles/post.module.scss';
 
@@ -32,26 +31,25 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-export default function FirstPost({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function FirstPost(this: any, { posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { width } = useWindowDimensions();
   const { top } = useWindowOffset();
   const [mounted, setMounted] = useState(false)
   const postTitle = useRef();
-
   useEffect(() => {
     setMounted(true);
   }, [])
 
   const toggle = {
-    isFixedTitle: !!(mounted && (top && top > 80))
+    isFixedTitle: (top as number) > 80
   }
-  
+
   return (
     <Layout title={posts.name}>
       <Div style={{ height: '2000px' }}>
-        <Div h="48px">
+        <Div>
           <Text
-            shadow={ toggle.isFixedTitle ? '1' : '' }
+            shadow={ toggle.isFixedTitle ? '2' : '' }
             tag="h1"
             textSize="display1"
             ref={postTitle}
@@ -77,6 +75,9 @@ export default function FirstPost({ posts }: InferGetStaticPropsType<typeof getS
         </Div>
         <Div>
           <Text tag="section">My name {posts.name} {posts.job}</Text>
+        </Div>
+        <Div m={{t: '1800px'}}>
+          <Input bg="themeBg" textColor="themeColor" placeholder="Search" />
         </Div>
       </Div>
 

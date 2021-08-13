@@ -1,12 +1,10 @@
 import Head from 'next/head'
 import { Div } from 'atomize'
-import { useTheme } from 'next-themes'
 import ThemeToogle from '@/components/ThemeToggle'
 
 import styles from './Layout.module.scss'
 
 export const WEBSITE_TITLE = 'My APP'
-
 /**
  * 
  * @param children Slot content
@@ -22,15 +20,12 @@ type Props = {
 
 export default function Layout({ children, title, className }: Props) {
 
-  const { resolvedTheme } = useTheme()
-  const isDark = resolvedTheme === 'dark';
-
   return (
     <Div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <title>{title + ' | ' + WEBSITE_TITLE}</title>
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
+        <title>{title + ' | ' + WEBSITE_TITLE}</title>            
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta
           name="description"
           content="Learn how to build a personal website using Next.js"

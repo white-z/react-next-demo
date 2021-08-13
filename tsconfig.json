@@ -33,8 +33,7 @@
     "*.tsx",
     "**/*.ts",
     "**/*.tsx",
-    "@types/.d.ts",
-    "pages/_document.tsx"
+    "@types/.d.ts"
   ],
   "exclude": [
     "node_modules"

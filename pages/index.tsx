@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
-import useWindowOffset from '../@hooks/useWindowOffset';
+import {useWindowOffset} from '../@hooks';
 
 export default function Home() {
   const { top } = useWindowOffset();

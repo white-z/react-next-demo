@@ -1,2 +1,2 @@
-export * from "./useWindowDimensions"
-export * from "./useWindowOffset"
+export * from './useWindowDimensions';
+export * from './useWindowOffset';
