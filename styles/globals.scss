@@ -37,6 +37,7 @@
   --scroll-bg: #F1F1F1;
   --scroll-bar: #C1C1C1;
   --scroll-hover: #A8A8A8;
+  --scroll-active: #787878;
   --shadow-1: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 1px 1px 0 rgba(8, 11, 14, 0.1);
   --shadow-2: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 3px 3px -1px rgba(8, 11, 14, 0.1);
   --shadow-3: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 6px 6px -1px rgba(8, 11, 14, 0.1);
@@ -54,6 +55,7 @@
   --scroll-bg: #424242;
   --scroll-bar: #686868;
   --scroll-hover: #7B7B7B;
+  --scroll-active: #A1A1A1;
   --shadow-1: 0 0 1px 0 rgba(8, 11, 14, 0.76), 0 1px 1px 0 rgba(8, 11, 14, 0.85);
   --shadow-2: 0 0 1px 0 rgba(8, 11, 14, 0.76), 0 3px 3px -1px rgba(8, 11, 14, 0.85);
   --shadow-3: 0 0 1px 0 rgba(8, 11, 14, 0.76), 0 6px 6px -1px rgba(8, 11, 14, 0.85);
@@ -113,6 +115,7 @@ button {
 ul, li {
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 img {
   max-width: 100%;
@@ -138,6 +141,7 @@ pre, code {
 ::-webkit-scrollbar
 {
 	width: .375rem;
+  height: .375rem;
 	background: transparent;
 }
 ::-webkit-scrollbar-thumb
@@ -147,5 +151,8 @@ pre, code {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--scroll-hover);
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--scroll-active)
 }
 

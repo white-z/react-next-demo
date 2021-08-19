@@ -13,6 +13,10 @@ export default function ThemeToggle() {
   
   const isDark = resolvedTheme === 'dark';
 
+  const changeTheme = () => {
+    setTheme(isDark ? 'light' : 'dark')
+  }
+
   return (
     <Div d="flex">
       The current theme is: {resolvedTheme}
@@ -23,7 +27,7 @@ export default function ThemeToggle() {
         m={{ r: "1rem" }}
         shadow="2"
         hoverShadow="4"
-        onClick={() => setTheme(isDark ? 'light' : 'dark')}
+        onClick={() => changeTheme()}
       >
         <Icon name="Search" size="20px" color="white"/>
       </Button>

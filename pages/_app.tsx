@@ -1,9 +1,8 @@
 import type { AppProps } from 'next/app'
 import Provider from '../components/Provider';
-
 import '../styles/globals.scss'
 
-function RootApp({ Component, pageProps }: AppProps) {
+function RootApp({ Component, pageProps, router }: AppProps) {
   return (
     <Provider>
       <Component {...pageProps} />

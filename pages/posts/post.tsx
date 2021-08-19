@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import cn from 'classnames'
 import Link from 'next/link'
@@ -8,14 +8,10 @@ import { useWindowOffset, useWindowDimensions } from '@/@hooks'
 
 import styles from '@/styles/post.module.scss';
 
-type Post = {
-  [key: string]: string
-}
-
 export const getStaticProps: GetStaticProps = async (context) => {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res: Post = await new Promise((resolve, reject) => {
+  const res = await new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({
         name: 'zhenghao',
@@ -31,14 +27,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-export default function FirstPost(this: any, { posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function FirstPost({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { width } = useWindowDimensions();
   const { top } = useWindowOffset();
-  const [mounted, setMounted] = useState(false)
   const postTitle = useRef();
-  useEffect(() => {
-    setMounted(true);
-  }, [])
 
   const toggle = {
     isFixedTitle: (top as number) > 80
@@ -46,7 +38,7 @@ export default function FirstPost(this: any, { posts }: InferGetStaticPropsType<
 
   return (
     <Layout title={posts.name}>
-      <Div style={{ height: '2000px' }}>
+      <Div>
         <Div>
           <Text
             shadow={ toggle.isFixedTitle ? '2' : '' }
@@ -76,11 +68,10 @@ export default function FirstPost(this: any, { posts }: InferGetStaticPropsType<
         <Div>
           <Text tag="section">My name {posts.name} {posts.job}</Text>
         </Div>
-        <Div m={{t: '1800px'}}>
+        <Div>
           <Input bg="themeBg" textColor="themeColor" placeholder="Search" />
         </Div>
       </Div>
-
     </Layout>
   )
 }

@@ -1,10 +1,13 @@
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { Div } from 'atomize'
+import { motion } from 'framer-motion'
 import ThemeToogle from '@/components/ThemeToggle'
 
 import styles from './Layout.module.scss'
 
 export const WEBSITE_TITLE = 'My APP'
+
 /**
  * 
  * @param children Slot content
@@ -19,12 +22,13 @@ type Props = {
 }
 
 export default function Layout({ children, title, className }: Props) {
-
+  const router = useRouter()
+  const PAGE_TITLE = title ? title + ' | ' : ''
   return (
     <Div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <title>{title + ' | ' + WEBSITE_TITLE}</title>            
+        <title>{PAGE_TITLE + WEBSITE_TITLE}</title>            
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta
           name="description"
@@ -44,7 +48,13 @@ export default function Layout({ children, title, className }: Props) {
         <ThemeToogle></ThemeToogle>
       </header>
 
-      <main className={`${styles.main} ${className || ''}`}>{children}</main>
+      <motion.div 
+        key={router.asPath} 
+        animate={{ opacity: 1 }} 
+        initial={{opacity: 0}} 
+        className={`${styles.main} ${className || ''}`}>
+        {children}
+      </motion.div>
       <footer className={styles.footer}>FOOTER</footer>
     </Div>
   )
