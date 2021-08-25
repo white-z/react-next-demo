@@ -48,7 +48,7 @@ export default function Post({ posts }: InferGetStaticPropsType<typeof getStatic
   const { id, total } = posts;
   return (
     <Layout>
-      <Div>
+      <Div style={{ height: '2000px' }}>
         <Text tag="section">this post ID: {id}</Text>
         <Div>
           <Link href="/">
@@ -67,7 +67,7 @@ export default function Post({ posts }: InferGetStaticPropsType<typeof getStatic
           })
         }
       </Div>
-      
+
     </Layout>
   )
 }

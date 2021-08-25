@@ -25,6 +25,7 @@ export default function ThemeToggle() {
         w="2.5rem"
         rounded="circle"
         m={{ r: "1rem" }}
+        aria-label="Toggle Theme"
         shadow="2"
         hoverShadow="4"
         onClick={() => changeTheme()}

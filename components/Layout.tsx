@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import ThemeToogle from '@/components/ThemeToggle'
 
 import styles from './Layout.module.scss'
+import utilStyle from '@/styles/utils.module.scss'
 
 export const WEBSITE_TITLE = 'My APP'
 
@@ -27,9 +28,8 @@ export default function Layout({ children, title, className }: Props) {
   return (
     <Div className={styles.container}>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <title>{PAGE_TITLE + WEBSITE_TITLE}</title>            
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=0" />
         <meta
           name="description"
           content="Learn how to build a personal website using Next.js"
@@ -42,19 +42,24 @@ export default function Layout({ children, title, className }: Props) {
         />
         <meta name="og:title" content={title + ' | ' + WEBSITE_TITLE} />
         <meta name="twitter:card" content="summary_large_image" />
+        <title>{PAGE_TITLE + WEBSITE_TITLE}</title>
+        <link rel="manifest" href="./manifest.json" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className={styles.header}>
+      <a className={utilStyle.skipLink} href="#main">Skip to Content</a>
+      <header className={styles.header} id="header">
         HEADER
         <ThemeToogle></ThemeToogle>
       </header>
 
-      <motion.div 
-        key={router.asPath} 
-        animate={{ opacity: 1 }} 
-        initial={{opacity: 0}} 
+      <motion.main
+        id="main"
+        key={router.asPath}
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
         className={`${styles.main} ${className || ''}`}>
         {children}
-      </motion.div>
+      </motion.main>
       <footer className={styles.footer}>FOOTER</footer>
     </Div>
   )

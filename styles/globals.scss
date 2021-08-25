@@ -77,6 +77,8 @@ html {
   font-size: var(--root-size);
   color: var(--theme-color);
   background: var(--theme-bg);
+  scrollbar-color: var(--scroll-bar) var(--scroll-bg);
+  scrollbar-width: thin;
 }
 body {
   margin: 0;

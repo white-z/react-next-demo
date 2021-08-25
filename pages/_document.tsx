@@ -30,7 +30,7 @@ class RootDocument extends Document<Props> {
 
   render() {
     return (
-      <Html>
+      <Html lang="zh-cmn-Hans" dir="ltr" >
         <Head>
           {this.props.stylesheets.map((sheet, i) => (
             <style
