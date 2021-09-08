@@ -11,23 +11,17 @@ import styles from '@/styles/post.module.scss';
 export const getStaticProps: GetStaticProps = async (context) => {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res = await new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({
-        name: 'zhenghao',
-        job: 'web front'
-      })
-    })
-  })
+  const res = await fetch('http://localhost:4000/api/list')
+  const list = await res.json();
   // const posts: Post = await res.json();
   return {
     props: {
-      posts: res
+      list: list.data
     }
   }
 }
 
-export default function FirstPost({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function FirstPost({ list }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { width } = useWindowDimensions();
   const { top } = useWindowOffset();
   const postTitle = useRef();
@@ -37,7 +31,7 @@ export default function FirstPost({ posts }: InferGetStaticPropsType<typeof getS
   }
 
   return (
-    <Layout title={posts.name}>
+    <Layout title="全部文章">
       <Div>
         <Div>
           <Text
@@ -49,7 +43,7 @@ export default function FirstPost({ posts }: InferGetStaticPropsType<typeof getS
               [styles.postTitle]: true,
               [styles.top]: toggle.isFixedTitle
             })}>
-            First Post
+            <Text tag="section">Current Scroll Top {top} & Page Width {width}</Text>
           </Text>
         </Div>
         <Text textSize="subheader">
@@ -59,17 +53,12 @@ export default function FirstPost({ posts }: InferGetStaticPropsType<typeof getS
             </a>
           </Link>
         </Text>
-        <Div>
-          <Text tag="section">Current Scroll Top {top}</Text>
-        </Div>
-        <Div>
-          <Text tag="section">Current Page Width {width}</Text>
-        </Div>
-        <Div>
-          <Text tag="section">My name {posts.name} {posts.job}</Text>
-        </Div>
-        <Div>
-          <Input bg="themeBg" textColor="themeColor" placeholder="Search" />
+        <Div className={styles.list}>
+          {
+            list.map((el: any) => {
+              return <Div className={styles.listItem} key={el.id}>{el.name}</Div>
+            })
+          }
         </Div>
       </Div>
     </Layout>
