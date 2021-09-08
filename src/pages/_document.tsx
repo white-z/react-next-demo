@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document'
-import Provider from '../components/Provider';
-import { styletron } from '../styletron';
+import Provider from '@/components/Provider';
+import { styletron } from '../../styletron';
 import { Server, Sheet } from 'styletron-engine-atomic'
 
 type Props = DocumentInitialProps & {
