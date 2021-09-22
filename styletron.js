@@ -10,9 +10,3 @@ export const styletron = isClient
       hydrate: getHydrateClass()
     })
   : new Server();
-
-export const getTheme = () => 
-  document.documentElement.getAttribute('data-theme') || '';
-
-export const currentTheme = isClient
-    ? getTheme() : ''

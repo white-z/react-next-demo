@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document'
-import Provider from '@/components/Provider';
+import Provider from '@/layout/Provider';
 import { styletron } from '../../styletron';
 import { Server, Sheet } from 'styletron-engine-atomic'
 

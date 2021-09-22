@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app'
-import Provider from '../components/Provider';
+import Provider from '@/layout/Provider';
 import '../styles/globals.scss'
 
 function RootApp({ Component, pageProps, router }: AppProps) {

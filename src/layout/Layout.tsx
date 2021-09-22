@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { Div } from 'atomize'
 import { motion } from 'framer-motion'
-import ThemeToogle from '@/components/ThemeToggle'
+import ThemeToogle from '@/components/Functions/ThemeToggle'
 
 import styles from './Layout.module.scss'
 import utilStyle from '@/styles/utils.module.scss'
@@ -29,7 +29,7 @@ export default function Layout({ children, title, className }: Props) {
     <Div className={styles.container}>
       <Head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" />
         <meta
           name="description"
           content="Learn how to build a personal website using Next.js"
@@ -43,7 +43,6 @@ export default function Layout({ children, title, className }: Props) {
         <meta name="og:title" content={title + ' | ' + WEBSITE_TITLE} />
         <meta name="twitter:card" content="summary_large_image" />
         <title>{PAGE_TITLE + WEBSITE_TITLE}</title>
-        <link rel="manifest" href="./manifest.json" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <a className={utilStyle.skipLink} href="#main">Skip to Content</a>

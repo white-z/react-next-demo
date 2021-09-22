@@ -2,7 +2,9 @@ const theme = {
   colors: {
     black: 'var(--always-dark)',
     themeBg: 'var(--theme-bg)',
-    themeColor: 'var(--theme-color)'
+    themeColor: 'var(--theme-color)',
+    gray500: 'var(--gray500)',
+    medium: 'var(--medium)'
   },
   grid: {
     gutterWidth: 'var(--root-size)'

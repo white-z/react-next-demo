@@ -5,6 +5,7 @@ import { Div, Button, Icon } from "atomize";
 export default function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), [])
@@ -14,7 +15,11 @@ export default function ThemeToggle() {
   const isDark = resolvedTheme === 'dark';
 
   const changeTheme = () => {
-    setTheme(isDark ? 'light' : 'dark')
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      setTheme(isDark ? 'light' : 'dark')
+    }, 1200)
   }
 
   return (
@@ -30,7 +35,7 @@ export default function ThemeToggle() {
         hoverShadow="4"
         onClick={() => changeTheme()}
       >
-        <Icon name="Search" size="20px" color="white"/>
+        <Icon name={loading ? 'Loading' : 'Search'} size="20px" color="white"/>
       </Button>
     </Div>
   )

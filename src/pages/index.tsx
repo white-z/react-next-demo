@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {Div} from 'atomize'
-import Layout from '../components/Layout'
+import Layout from '@/layout/Layout'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router';
 

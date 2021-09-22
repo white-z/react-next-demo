@@ -1,0 +1,130 @@
+.wrapper {
+  --thead-bg: #fafafa;
+  --th-border-color: #ebebeb;
+  --table-border-color: #f0f0f0;
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 100%;
+}
+[data-theme="dark"] .wrapper{
+  --thead-bg: #191f27;
+  --th-border-color: #2f2f2f;
+  --table-border-color: #303030;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.content.bordered {
+  border-left: 1px solid var(--table-border-color);
+  border-right: 1px solid var(--table-border-color);
+  th {
+    border-top: 1px solid var(--table-border-color);
+    &:before {
+      background-color: transparent !important;
+    }
+  }
+  th:not(:last-child) {
+    border-right: 1px solid var(--table-border-color);
+  }
+  td:not(:last-child) {
+    border-right: 1px solid var(--table-border-color);
+  }
+}
+
+.content.table-default {
+  padding: var(--height-tiny);
+}
+.content.table-middle {
+  padding: var(--size-body);
+}
+.content.table-small {
+  th, td {
+    padding: var(--size-tiny);
+  }
+}
+
+.content {
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: auto;
+  width: 100%;
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    tr {
+      th {
+        position: relative;
+        color: var(--theme-color);
+        background: var(--thead-bg);
+        border-bottom: 1px solid var(--table-border-color);
+        font-weight: 500;
+        text-align: left;
+        overflow-wrap: break-word;
+        &:not(:last-child):before {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          width: 1px;
+          height: 1.6em;
+          background-color: var(--table-border-color);
+          transform: translateY(-50%);
+          transition: background-color .25s;
+          content: "";
+        }
+  
+        .cell {
+          display: flex;
+        }
+        .cell-left {
+          justify-content: start;
+        }
+        .cell-center {
+          justify-content: center;
+        }
+        .cell-right {
+          justify-content: end;
+        }
+      }
+    }
+  }
+  
+  tbody {
+    min-height: 10rem;
+    tr {
+      td {
+        border-bottom: 1px solid var(--table-border-color);
+        transition: background .25s;
+        overflow-wrap: break-word;
+        color: var(--medium);
+        background-color: var(--theme-bg);
+        .cell {
+          &.ellipsis {
+            overflow: hidden;
+            overflow-wrap: break-word;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: keep-all;
+          }
+        }
+      }
+      &:hover {
+        td {
+          background-color: var(--thead-bg);
+        }
+      }
+    }
+  }
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}

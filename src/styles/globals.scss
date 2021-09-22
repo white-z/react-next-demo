@@ -4,6 +4,7 @@
   --always-dark: #21262d;
   --link: #0284fe;
   
+  
   --root-size: 16px;
   --size-tiny: .625rem;
   --size-caption: .75rem;
@@ -30,6 +31,8 @@
   /* theme dark need recover */
   --theme-bg: #fff;
   --theme-color: #0e141b;
+  --gray500: #C9CED6;
+  --medium: rgb(80, 82, 86);
   --black: #0e141b;
   --white: #fff;
   --dark: #21262d;
@@ -38,6 +41,7 @@
   --scroll-bar: #C1C1C1;
   --scroll-hover: #A8A8A8;
   --scroll-active: #787878;
+  --spinning: #3498db;
   --shadow-1: 0 0 .0625rem 0 rgba(8, 11, 14, 0.06), 0 .0625rem .0625rem 0 rgba(8, 11, 14, 0.1);
   --shadow-2: 0 0 .0625rem 0 rgba(8, 11, 14, 0.06), 0 .1875rem .1875rem -0.0625rem rgba(8, 11, 14, 0.1);
   --shadow-3: 0 0 .0625rem 0 rgba(8, 11, 14, 0.06), 0 .375rem .375rem -0.0625rem rgba(8, 11, 14, 0.1);
@@ -48,6 +52,8 @@
 [data-theme="dark"] {
   --theme-bg: #0e141b;
   --theme-color: #fff;
+  --gray500: rgba(255,255,255,0.3);
+  --medium: #b2b8c4;
   --black: #fff;
   --white: #0e141b;
   --dark: #e7e7e7;
@@ -56,6 +62,7 @@
   --scroll-bar: #686868;
   --scroll-hover: #7B7B7B;
   --scroll-active: #A1A1A1;
+  --spinning: #455571;
   --shadow-1: 0 0 .0625rem 0 rgba(8, 11, 14, 0.76), 0 .0625rem .0625rem 0 rgba(8, 11, 14, 0.85);
   --shadow-2: 0 0 .0625rem 0 rgba(8, 11, 14, 0.76), 0 .1875rem .1875rem -0.0625rem rgba(8, 11, 14, 0.85);
   --shadow-3: 0 0 .0625rem 0 rgba(8, 11, 14, 0.76), 0 .375rem .375rem -0.0625rem rgba(8, 11, 14, 0.85);
@@ -66,6 +73,7 @@
 /* Reset Style */
 * {
   box-sizing: border-box;
+  scrollbar-width: thin;
 }
 #__next {
   height: 100%;
@@ -77,8 +85,6 @@ html {
   font-size: var(--root-size);
   color: var(--theme-color);
   background: var(--theme-bg);
-  scrollbar-color: var(--scroll-bar) var(--scroll-bg);
-  scrollbar-width: thin;
 }
 body {
   margin: 0;
@@ -101,6 +107,9 @@ input {
   border: none;
   font-family: inherit;
 }
+button {
+  border: none;
+}
 a {
   margin: 0;
   padding: 0;
@@ -111,13 +120,14 @@ a {
 a:hover {
   text-decoration: underline;
 }
-button {
-  border: none;
-}
 ul, li {
   padding: 0;
   margin: 0;
   list-style: none;
+}
+table, thead, tr, th, td {
+  padding: 0;
+  margin: 0;
 }
 img {
   max-width: 100%;
@@ -148,6 +158,9 @@ pre, code {
   height: .375rem;
 	background: transparent;
 }
+::-webkit-scrollbar-corner {
+  visibility: hidden;
+}
 ::-webkit-scrollbar-thumb
 {
   box-shadow: none;
@@ -158,6 +171,7 @@ pre, code {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--scroll-hover);
 }
+
 ::-webkit-scrollbar-thumb:active {
   background-color: var(--scroll-active)
 }
