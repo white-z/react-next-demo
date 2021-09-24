@@ -8,5 +8,6 @@ export interface SpinProps {
   spinning: boolean,
   name?: SpinName,
   size?: string,
-  children?: any
+  children?: any,
+  [key: string]: any
 }

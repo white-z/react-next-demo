@@ -17,9 +17,12 @@ export const useWindowDimensions = (): WindowDimentions => {
     });
   };
   useEffect(() => {
-    handleResize()
+    window.addEventListener('load', handleResize);
     window.addEventListener('resize', handleResize);
-    return (): void => window.removeEventListener('resize', handleResize);
+    return (): void => {
+      window.removeEventListener('load', handleResize);
+      window.removeEventListener('resize', handleResize);
+    }
   }, []);
 
   return windowDimensions;

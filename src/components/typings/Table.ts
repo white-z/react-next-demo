@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
 import { StyleObject } from "styletron-standard";
+import { PaginationProps } from './Pagination';
 
 export type RowKey = string
 
@@ -22,6 +23,7 @@ export interface TableProps {
   children?: any,
   bordered?: boolean,
   loading?: boolean,
+  pagination: PaginationProps,
   style?: CSSProperties,
   className?: string,
   h?: string | number,

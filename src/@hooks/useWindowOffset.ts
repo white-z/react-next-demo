@@ -23,11 +23,12 @@ export const useWindowOffset = (): WindowOffset => {
     });
   };
   useEffect(() => {
-    setTimeout(() => {
-      handleScroll();
-    })
+    window.addEventListener('load', handleScroll);
     window.addEventListener('scroll', handleScroll);
-    return (): void => window.removeEventListener('scroll', handleScroll);
+    return (): void => {
+      window.removeEventListener('load', handleScroll)
+      window.removeEventListener('scroll', handleScroll)
+    };
   }, []);
 
   return windowOffset;

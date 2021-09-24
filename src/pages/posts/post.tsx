@@ -22,16 +22,37 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
+type ListResult = {
+  data: any[],
+  total: number,
+  pageSize: number
+}
+
 export default function FirstPost({ list }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 
   const { width } = useWindowDimensions()
   const { top, bottom } = useWindowOffset()
   const [tableLoading, setTableLoading] = useState(false)
-  const [tableData, setTableData] = useState(list)
+  const [tableData, setTableData] = useState<any>([])
+  const [pagination, setPagination] = useState({
+    total: 0,
+    currentPage: 1
+  })
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [currentOpenModal, setCurrentOpenModal] = useState<TableRow>({})
   const postTitle = useRef()
   const isFixedTitle = (top as number) > 80
+
+  useEffect(() => {
+    fetch('http://localhost:4000/api/list').then(async (res) => {
+      const result: ListResult = await res.json();
+      setTableData(result.data)
+      setPagination({
+        ...pagination,
+        total: result.total
+      })
+    })
+  })
 
   const onOpenModal = (el: TableRow) => {
     setCurrentOpenModal(el)
@@ -58,6 +79,10 @@ export default function FirstPost({ list }: InferGetServerSidePropsType<typeof g
 
   const onDelete = (row: TableRow) => {
     setTableData(tableData.filter((el: TableRow) => el.id !== row.id))
+  }
+
+  const onPageChange = (page: number, type: string) => {
+    
   }
 
   const columns = [
@@ -146,6 +171,7 @@ export default function FirstPost({ list }: InferGetServerSidePropsType<typeof g
           rowKey="id" 
           bordered 
           loading={tableLoading}
+          pagination={{total: tableData.length, onChange: onPageChange}}
         >
           <div className="some">thing</div>
           <div className="some999">thing999</div>

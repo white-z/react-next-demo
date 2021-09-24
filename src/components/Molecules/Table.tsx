@@ -1,4 +1,5 @@
 import { Spin } from '../Atoms'
+import { Pagination } from './Pagination'
 import { Div } from 'atomize'
 import styles from './Table.module.scss'
 import { TableProps, TableColumn } from '../typings'
@@ -83,13 +84,14 @@ export function Table(props: TableProps) {
     h = '100%',
     p = '.625rem',
     className = '',
+    pagination = {},
     style,
     children
   } = props
 
   return (
     <Div className={`${styles.wrapper} ${className}`} style={{...style as CSSProperties}}>
-      <Spin spinning={loading}>
+      <Spin spinning={loading} d="flex" flexDir="column">
         <Div className={styles.container} style={{height: typeof h === 'string' ? h : h + 'px'}}>
           <table className={`${styles.content} ${bordered ? styles.bordered : ''}`}>
             <Colgroup columns={columns} />
@@ -126,6 +128,9 @@ export function Table(props: TableProps) {
             )
           }
         </Div>
+        {
+          Pagination(pagination)
+        }
       </Spin>
     </Div>
   )
