@@ -17,10 +17,9 @@ export const useWindowDimensions = (): WindowDimentions => {
     });
   };
   useEffect(() => {
-    window.addEventListener('load', handleResize);
+    handleResize()
     window.addEventListener('resize', handleResize);
     return (): void => {
-      window.removeEventListener('load', handleResize);
       window.removeEventListener('resize', handleResize);
     }
   }, []);

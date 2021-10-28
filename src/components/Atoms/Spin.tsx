@@ -1,12 +1,10 @@
 import styles from './Spin.module.scss'
 import { Icon, Div } from 'atomize'
 import { motion } from 'framer-motion'
-import { SpinName, SpinProps } from '../typings'
-
-export { SpinName } from '../typings'
+import {SpinProps } from '../typings'
 
 export function Spin(props: SpinProps) {
-  const {children, spinning = false, name = SpinName.Loading, size = '1.5rem'} = props
+  const {children, spinning = false, name = 'Loading', size = '1.5rem'} = props
   const Content = () => {
     return (
       <>

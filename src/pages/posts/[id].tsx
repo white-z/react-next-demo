@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Div, Text } from 'atomize';
 import Layout from '@/layout/Layout'
 import { motion } from 'framer-motion'
-import {Spin, SpinName} from '@/components/Atoms'
+import {Spin} from '@/components/Atoms'
 
 type Post = {
   name: string,
@@ -60,6 +60,15 @@ export default function Post({ posts }: InferGetStaticPropsType<typeof getStatic
       resolvedUrl: A normalized version of the request URL that strips the _next/data prefix for client transitions and includes original query values.
       locale contains the active locale (if enabled).
       locales contains all supported locales (if enabled).
+      defaultLocale contains the configured default locale (if enabled).params: If this page uses a dynamic route, params contains the route parameters. If the page name is [id].js , then params will look like { id: ... }. To learn more, take a look at the Dynamic Routing documentation.
+      req: The HTTP IncomingMessage object.
+      res: The HTTP response object.
+      query: An object representing the query string.
+      preview: preview is true if the page is in the preview mode and false otherwise. See the Preview Mode documentation.
+      previewData: The preview data set by setPreviewData. See the Preview Mode documentation.
+      resolvedUrl: A normalized version of the request URL that strips the _next/data prefix for client transitions and includes original query values.
+      locale contains the active locale (if enabled).
+      locales contains all supported locales (if enabled).
       defaultLocale contains the configured default locale (if enabled).`)
       setTotalLoaded(true)
     }, 2000)
@@ -69,7 +78,7 @@ export default function Post({ posts }: InferGetStaticPropsType<typeof getStatic
   const { id, total } = posts;
   return (
     <Layout>
-      <Div style={{ height: '2000px' }}>
+      <Div>
         <Div textSize="display1" d="flex">
         </Div>
         <Text tag="section">this post ID: {id}</Text>
@@ -89,7 +98,7 @@ export default function Post({ posts }: InferGetStaticPropsType<typeof getStatic
             )
           })
         }
-        <Spin spinning={! totalLoaded} name={SpinName.Loading3}>
+        <Spin spinning={! totalLoaded} name="Loading3">
           <motion.div initial={{opacity: 0}} animate={{ opacity: totalLoaded ? 1 : 0}}>
             {text}
           </motion.div>

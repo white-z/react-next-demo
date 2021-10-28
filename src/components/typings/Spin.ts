@@ -1,12 +1,6 @@
-export enum SpinName {
-  Loading = 'Loading',
-  Loading2 = 'Loading2',
-  Loading3 = 'Loading3'
-}
-
 export interface SpinProps {
   spinning: boolean,
-  name?: SpinName,
+  name?: string,
   size?: string,
   children?: any,
   [key: string]: any
