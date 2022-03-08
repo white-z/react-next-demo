@@ -1,4 +1,4 @@
-export function multistep(steps: any[], args: any[], callback: Function) {
+export function multistep(steps: any[], args: any[], callback: () => void) {
   var tasks = steps.concat();
 
   setTimeout(function () {
